@@ -16,7 +16,7 @@ Swagger Documentation
 git clone https://github.com/JeanFrancoisMaas/SensitiveWords.git
 
 ## 2. Setup database
-Run the scripts inside the /database folder in SQL Server.
+Run the scripts inside the /SQL Scripts/database folder in SQL Server.
 
 ## 3. Update connection string
 Modify appsettings.json if needed.
