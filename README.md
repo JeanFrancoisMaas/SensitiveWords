@@ -4,13 +4,14 @@
 A .NET 9 microservice that sanitizes client messages by replacing sensitive keywords with asterisks.
 
 ## Architecture
-.NET 9 Web API
-.Net 9 Web App with Razor Pages
-Dapper
-SQL Server
-Clean Architecture
-Unit Tests (xUnit + Moq)
-Swagger Documentation
+- .NET 9 Web API
+- .Net 9 Web App with Razor Pages
+- Dapper
+- SQL Server
+- Clean Architecture
+- Unit Tests (xUnit + Moq)
+- Swagger Documentation
+  
 ### How to Run
 ## 1. Clone the repository
 git clone https://github.com/JeanFrancoisMaas/SensitiveWords.git
