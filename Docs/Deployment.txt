@@ -1,0 +1,12 @@
+Deployment:
+
+SQL Database should be created on the server, or created on a cloud platform (Scripts can be found in the solution folder).
+Connection strings updated to use server IP or cloud platform address instead of localhost.
+
+Redis should be installed on the server.
+
+Depending on the infrastructure at use:
+Option 1: Deploy Microservice to server.
+Option 2: Deploy Microservice to K8s.
+
+**in an ideal scenario this would be automated with pipelines.

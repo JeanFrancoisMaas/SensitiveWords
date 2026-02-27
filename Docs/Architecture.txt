@@ -1,0 +1,24 @@
+Solution Architecture:
+
+-Solution
+ --Services
+  ---Sanitizer MicroService
+   ----Controllers
+   ----Infrastructure
+   -----DTOs
+   -----Interfaces
+   -----Services
+   ----Models
+   ----ProcedureIndex
+
+ --Apphost
+ --Contracts
+ --Tests
+ --ServiceDefaults
+
+ --WebApp
+  ---Controllers
+  ---Pages
+  ---Interfaces
+  ---Services
+  ---Models

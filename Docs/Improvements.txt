@@ -1,0 +1,13 @@
+Possible Improvements:
+
+-Use of Contracts for communication between web app and microservices.
+-Possible message queue services if volumes grow (Azure service bus).
+-Use Sanitizer C# class to sanitize messages in stead of doing it in SQL.
+-Add functionality to Base Controller to standardize responses and error handling.
+-Audit logging.
+-User Authentication (To use for audit logging) as well as adding personalized information to display to the user (history, names, ,etc.).
+-Integration Tests.
+-Improve Censoring algorithm to handle punctuation, eg. (SELECT, UPDATE) Currently would be : (SELECT, ******). **this was intentionally left this way to showcase additional improvements that could be made to the algorithm.
+-API Authorization.
+-Add versioning to API.
+-Implement Redis to cache for example key words.
