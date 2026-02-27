@@ -1,0 +1,99 @@
+﻿@page
+@model SensitiveWords.WebApp.Pages.KeyWords.IndexModel
+@{
+}
+
+<div class="mt-5 card p-2">
+    <div class="card-header p-2"> 
+        <h4>Key Words<a href="javascript:void(0)" id="addNewWordIcon" data-bs-toggle="modal" data-bs-target="#addKeyWordModal"><i class="bi bi-plus text-primary" title="Add New"></i></a></h4>
+    </div>
+    <div class="card-body">
+        <table id="keyWordsTable" class="display">
+
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var keyWord in Model.KeyWords)
+                {
+                    <tr>
+                        <td>@keyWord.Description.Trim()</td>
+                        <td>@(keyWord.Active ? "Yes" : "No")</td>
+                        <td><a href="javascript:void(0)" id="toggleWordActiveIcon" onclick="toggleKeyWord(@keyWord.SanitizerKeyWordId)"><i class="bi bi-trash text-danger" title="Disable Word"></i></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <p id="errorContainer"></p>
+    </div>
+</div>
+
+<div class="modal fade" id="addKeyWordModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Keyword</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label>Description*</label>
+                <input type="text" class="w-100" id="keyWordDescription"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="saveNewKeyWord()">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#keyWordsTable').DataTable();
+        });
+
+        function saveNewKeyWord(){
+            var value = $("#keyWordDescription").val();
+            if(!value || value == ""  )
+            {
+                $("#errorContainer").val("Key word description required")
+                return;
+            }
+            fetch("http://localhost:5216/api/sanitizer/postkeyword", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    description: value
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+
+        function toggleKeyWord(keyWordId){
+            fetch("http://localhost:5216/api/sanitizer/togglekeyword", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    sanitizerKeyWordId: keyWordId
+                })
+            })
+            .then(response => response.json())
+            .then(data => location.reload())
+            .catch(error => console.error('Error:', error));
+        }
+
+    </script>
+}

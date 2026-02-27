@@ -1,0 +1,6 @@
+@SensitiveWords.MS.Sanitizer_HostAddress = http://localhost:5216
+
+GET {{SensitiveWords.MS.Sanitizer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Sensitive Words</h1>
+    <p>Please send us a message to view a sanitized version of the message.</p>
+</div>
+
+<div class="row d-flex">
+    <textarea class="mb-2" id="messageTextArea" placeholder="Please type your message here" rows="4"></textarea>
+    <button class="mb-2 btn btn-primary btn-outline-dark" onclick="postMessage()" id="submitBtn">Submit</button>
+    <textarea class="mb-2" readonly id="sanitizedTextArea" placeholder="Sanitized message will be displayed here" rows="4"></textarea>
+</div>
+
+@section Scripts {
+    <script>
+        function postMessage(){
+            var value = $("#messageTextArea").val();
+            if(!value || value == ""  )
+            {
+                $("#errorContainer").val("Message required")
+                return;
+            }
+            fetch("http://localhost:5216/api/sanitizer/postmessage", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: value
+                })
+            })
+            .then(response => response.json())
+            .then(data => $("#sanitizedTextArea").val(data.sanitizedMessage))
+            .catch(error => console.error('Error:', error));
+        }
+
+    </script>
+}

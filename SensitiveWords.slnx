@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Services/">
+    <Project Path="SensitiveWords.MS.Sanitizer/SensitiveWords.MS.Sanitizer.csproj" />
+  </Folder>
+  <Project Path="SensitiveWords.AppHost/SensitiveWords.AppHost.csproj" />
+  <Project Path="SensitiveWords.Contracts/SensitiveWords.Contracts.csproj" Id="24fe2054-0076-4b12-88a7-038b8cc83a3b" />
+  <Project Path="SensitiveWords.Sanitizer.Tests/SensitiveWords.Sanitizer.Tests.csproj" />
+  <Project Path="SensitiveWords.ServiceDefaults/SensitiveWords.ServiceDefaults.csproj" />
+  <Project Path="SensitiveWords.WebApp/SensitiveWords.WebApp.csproj" />
+</Solution>

@@ -1,0 +1,22 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.1.0">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>1068417b-d51e-4c6b-9937-92f311259ca5</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting" Version="13.1.1" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.1.1" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SensitiveWords.MS.Sanitizer\SensitiveWords.MS.Sanitizer.csproj" />
+    <ProjectReference Include="..\SensitiveWords.WebApp\SensitiveWords.WebApp.csproj" />
+  </ItemGroup>
+
+</Project>

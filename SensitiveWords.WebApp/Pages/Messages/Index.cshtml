@@ -1,0 +1,61 @@
+﻿@page
+@model SensitiveWords.WebApp.Pages.Messages.IndexModel
+@{
+}
+<div class="mt-5 card p-2">
+    <div class="card-header p-2">
+        <h4>Client Messages</h4>
+    </div>
+    <div class="card-body">
+        <table id="messagesTable" class="display">
+
+            <thead>
+                <tr>
+                    <th>Original Message</th>
+                    <th>Sanitized Message</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var message in Model.Messages)
+                {
+                    <tr>
+                        <td>@message.Message</td>
+                        <td>@message.SanitizedMessage</td>
+                        <td>@(message.Active ? "Yes" : "No")</td>
+                        <td><a href="javascript:void(0)" id="toggleWordActiveIcon" onclick="deleteClientMessage(@message.ClientMessageId)"><i class="bi bi-trash text-danger" title="Delete Message"></i></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <p id="errorContainer"></p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#messagesTable').DataTable();
+        });
+
+        function deleteClientMessage(clientMessageId)
+        {
+            fetch("http://localhost:5216/api/sanitizer/deletemessage", {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    clientMessageId: clientMessageId
+                })
+            })
+        .then(response => response.json())
+        .then(data =>  location.reload())
+        .catch(error => console.error('Error:', error));
+        }
+
+    </script>
+}
