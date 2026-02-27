@@ -52,7 +52,7 @@ namespace SensitiveWords.MS.Sanitizer.Infrastructure.Services
 
             var param = new
             {
-                Message = description ?? ""
+                Description = description ?? ""
             };
 
             var keyWord = await _executor.QueryFirstOrDefaultAsync<KeyWord>(connection, PostProcedures.CreateNewKeyWord, param);
