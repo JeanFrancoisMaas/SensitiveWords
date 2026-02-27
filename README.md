@@ -33,5 +33,5 @@ Swagger will be available at: https://localhost:7018/swagger
 dotnet test
 
 ## Database Structure
-ClientMessages
-SanitizerKeyWords
+- ClientMessages
+- SanitizerKeyWords
