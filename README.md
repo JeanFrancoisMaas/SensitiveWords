@@ -13,7 +13,7 @@ Unit Tests (xUnit + Moq)
 Swagger Documentation
 ### How to Run
 ## 1. Clone the repository
-git clone https://github.com/yourusername/SensitiveWords.Sanitizer.git
+git clone https://github.com/JeanFrancoisMaas/SensitiveWords.git
 
 ## 2. Setup database
 Run the scripts inside the /database folder in SQL Server.
